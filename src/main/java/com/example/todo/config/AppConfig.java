@@ -1,2 +1,4 @@
-package com.example.todo.config;public class AppConfig {
+package com.example.todo.config;
+
+public class AppConfig {
 }
