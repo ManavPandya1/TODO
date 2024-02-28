@@ -70,7 +70,7 @@ public class ItemController {
         } catch (Exception e) {
             // Handle other exceptions if needed
             Map<String, String> response = new HashMap<>();
-            response.put("error", "Error during addddddd iteeeemem");
+            response.put("error", "Error during add item");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -95,7 +95,7 @@ public class ItemController {
         } catch (Exception e) {
             // Handle other exceptions if needed
             Map<String, String> response = new HashMap<>();
-            response.put("error", "Error during addddddd iteeeemem");
+            response.put("error", "Error during add item");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

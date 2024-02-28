@@ -12,7 +12,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     List<Item> findAll();
 
-    List<Item> findByUser_Id(Long userId);
+    List<Item> findByUser_Id(long userId);
 
 }
 

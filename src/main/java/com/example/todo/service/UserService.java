@@ -18,7 +18,6 @@ public class UserService {
     {
         return userRepository.findByUsername(email);
     }
-
     public User saveUser(User user) {
         return userRepository.save(user);
     }

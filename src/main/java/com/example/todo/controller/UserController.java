@@ -14,23 +14,13 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-
-
-
-
-
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/users")
 public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-
-
     @Autowired
     private UserService userService;
-
-
-
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/hello")
     public String getHello() {
