@@ -23,9 +23,12 @@ const FileUpload = () => {
     return (
         <div>
             <h2>Upload File</h2>
-            <input type="file" onChange={handleFileUpload} />
+            <input type="file" onChange={handleFileUpload}/>
+            <button>Submit</button>
         </div>
+
     );
 };
 
 export default FileUpload;
+

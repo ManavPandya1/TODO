@@ -10,6 +10,6 @@ import java.util.List;
 public interface FileRepository extends JpaRepository<FileEntity, Long> {
     FileEntity findByFileName(String fileName);
 
-    List<FileEntity> findByFileSizeGreaterThan(long fileSize);
+    //List<FileEntity> findByFileSizeGreaterThan(long fileSize);
 }
 
