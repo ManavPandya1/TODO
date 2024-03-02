@@ -15,7 +15,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// AuctionItemController.java
+// TodoItemController.java
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api")
@@ -23,28 +23,28 @@ public class ItemController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private ItemService auctionItemService;
+    private ItemService TodoItemService;
 
     @Autowired
     private UserService userService;
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/add-item")
-    public ResponseEntity<?> addAuctionItems(@RequestBody Item auctionItem) {
+    public ResponseEntity<?> addTodoItems(@RequestBody Item TodoItem) {
 
         try {
-            logger.info("Received signup request for username: {}", auctionItem.getUser().getUsername());
+            logger.info("Received signup request for username: {}", TodoItem.getUser().getUsername());
 
 
-            String username = auctionItem.getUser().getUsername();
+            String username = TodoItem.getUser().getUsername();
             User user = userService.findByUsername(username);
 
-            // Set the user in the AuctionItem
-            auctionItem.setUser(user);
+            // Set the user in the TodoItem
+            TodoItem.setUser(user);
 
-            // Save the AuctionItem
-            auctionItemService.saveAuctionItem(auctionItem);
-            auctionItemService.saveAuctionItem(auctionItem);
+            // Save the TodoItem
+            TodoItemService.saveTodoItem(TodoItem);
+            TodoItemService.saveTodoItem(TodoItem);
             Map<String, String> response = new HashMap<>();
             response.put("data", "item  registered successfully");
             return ResponseEntity.ok(response);
@@ -58,14 +58,14 @@ public class ItemController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/items")
-    public ResponseEntity<?> getAuctionItems() {
+    public ResponseEntity<?> getTodoItems() {
 
         try {
-            List<Item> auctionItems = auctionItemService.findAllItems();
+            List<Item> TodoItems = TodoItemService.findAllItems();
 
 
             Map<String, Object> response = new HashMap<>();
-            response.put("data", auctionItems);
+            response.put("data", TodoItems);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             // Handle other exceptions if needed
@@ -77,7 +77,7 @@ public class ItemController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/my-items")
-    public ResponseEntity<?> getMyAuctionItems(@RequestParam String username) {
+    public ResponseEntity<?> getMyTodoItems(@RequestParam String username) {
         logger.info("Received myitem request for username: {}",username);
 
 
@@ -87,10 +87,10 @@ public class ItemController {
             long id=user.getId();
 
 
-            List<Item> auctionItems = auctionItemService.findByUserId(id);
+            List<Item> TodoItems = TodoItemService.findByUserId(id);
 
             Map<String, Object> response = new HashMap<>();
-            response.put("data", auctionItems);
+            response.put("data", TodoItems);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             // Handle other exceptions if needed

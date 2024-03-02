@@ -5,8 +5,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
-// AuctionItem.java
-// src/main/java/com/example/auction/entity/AuctionItem.java
+// TodoItem.java
+// src/main/java/com/example/Todo/entity/TodoItem.java
 
 
 @Entity
@@ -20,8 +20,8 @@ public class Item {
 
     @Column(name = "description")
     private String description;
-    @Column(name = "current_bid")
-    private double currentBid;
+    @Column(name = "current_price")
+    private double currentPrice;
 
     @Column(name = "starting_price")
     private double startingPrice;
@@ -79,11 +79,11 @@ public class Item {
     }
 
     public double getCurrentBid() {
-        return currentBid;
+        return currentPrice;
     }
 
     public void setCurrentBid(double currentBid) {
-        this.currentBid = currentBid;
+        this.currentPrice = currentBid;
     }
 
     public double getStartingPrice() {

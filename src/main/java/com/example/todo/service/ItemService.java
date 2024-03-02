@@ -10,18 +10,18 @@ import java.util.List;
 public class ItemService {
 
     @Autowired
-    private ItemRepository auctionItemRepository;
+    private ItemRepository TodoItemRepository;
 
     public List<Item> findAllItems()
     {
-        return auctionItemRepository.findAll();
+        return TodoItemRepository.findAll();
     }
 
-    public Item saveAuctionItem(Item auctionItem) {
-        return auctionItemRepository.save(auctionItem);
+    public Item saveTodoItem(Item TodoItem) {
+        return TodoItemRepository.save(TodoItem);
     }
 
     public List<Item> findByUserId(Long userId) {
-        return auctionItemRepository.findByUser_Id(userId);
+        return TodoItemRepository.findByUser_Id(userId);
     }
 }

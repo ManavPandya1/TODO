@@ -86,6 +86,7 @@ const Login = () => {
                 const { token } = response.data;
                 sessionStorage.setItem('token', token);
                 console.log('Login successful!');
+                //document.write("Login successful");
             } else {
                 console.error('Login failed:', response.data.error);
             }
