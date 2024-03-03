@@ -86,7 +86,6 @@ const Login = () => {
                 const { token } = response.data;
                 sessionStorage.setItem('token', token);
                 console.log('Login successful!');
-                //document.write("Login successful");
             } else {
                 console.error('Login failed:', response.data.error);
             }
@@ -96,23 +95,22 @@ const Login = () => {
     };
 
     return (
-        <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <h2>Login</h2>
-            <form onSubmit={handleLogin} style={{ display: 'inline-block' }}>
-                <label style={{ display: 'block', marginBottom: '10px' }}>
-                    Username:
-                    <input type="text" name="username" value={credentials.username} onChange={handleChange} style={{ marginLeft: '10px' }} />
-                </label>
-                <br />
-                <label style={{ display: 'block', marginBottom: '10px' }}>
-                    Password:
-                    <input type="password" name="password" value={credentials.password} onChange={handleChange} style={{ marginLeft: '10px' }} />
-                </label>
-                <br />
-                <button type="submit" style={{ marginLeft: '10px' }}>Login</button>
+        <div style={{ maxWidth: '400px', margin: '0 auto', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
+            <h2 style={{ textAlign: 'center' }}>Login</h2>
+            <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column' }}>
+                <div style={{ marginBottom: '15px' }}>
+                    <label htmlFor="username" style={{ fontWeight: 'bold' }}>Username:</label>
+                    <input type="text" id="username" name="username" value={credentials.username} onChange={handleChange} style={{ width: '100%', padding: '8px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc' }} />
+                </div>
+                <div style={{ marginBottom: '15px' }}>
+                    <label htmlFor="password" style={{ fontWeight: 'bold' }}>Password:</label>
+                    <input type="password" id="password" name="password" value={credentials.password} onChange={handleChange} style={{ width: '100%', padding: '8px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc' }} />
+                </div>
+                <button type="submit" style={{ width: '100%', padding: '10px', fontSize: '16px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Login</button>
             </form>
         </div>
     );
 };
 
 export default Login;
+

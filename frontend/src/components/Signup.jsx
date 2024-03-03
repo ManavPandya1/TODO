@@ -73,6 +73,7 @@ const Signup = () => {
 export default Signup;*/
 
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Signup = () => {
     const [user, setUser] = useState({
@@ -113,25 +114,22 @@ const Signup = () => {
     };
 
     return (
-        <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <h2>Sign Up</h2>
-            <form onSubmit={handleSubmit} style={{ display: 'inline-block' }}>
-                <label style={{ display: 'block', marginBottom: '10px' }}>
-                    Username:
-                    <input type="text" name="username" value={user.username} onChange={handleChange} style={{ marginLeft: '10px' }} />
-                </label>
-                <br />
-                <label style={{ display: 'block', marginBottom: '10px' }}>
-                    Email:
-                    <input type="email" name="email" value={user.email} onChange={handleChange} style={{ marginLeft: '10px' }} />
-                </label>
-                <br />
-                <label style={{ display: 'block', marginBottom: '10px' }}>
-                    Password:
-                    <input type="password" name="password" value={user.password} onChange={handleChange} style={{ marginLeft: '10px' }} />
-                </label>
-                <br />
-                <button type="submit" style={{ marginLeft: '10px' }}>Sign Up</button>
+        <div style={{ maxWidth: '400px', margin: '0 auto', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
+            <h2 style={{ textAlign: 'center' }}>Sign Up</h2>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+                <div style={{ marginBottom: '15px' }}>
+                    <label htmlFor="username" style={{ fontWeight: 'bold' }}>Username:</label>
+                    <input type="text" id="username" name="username" value={user.username} onChange={handleChange} style={{ width: '100%', padding: '8px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc' }} />
+                </div>
+                <div style={{ marginBottom: '15px' }}>
+                    <label htmlFor="email" style={{ fontWeight: 'bold' }}>Email:</label>
+                    <input type="email" id="email" name="email" value={user.email} onChange={handleChange} style={{ width: '100%', padding: '8px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc' }} />
+                </div>
+                <div style={{ marginBottom: '15px' }}>
+                    <label htmlFor="password" style={{ fontWeight: 'bold' }}>Password:</label>
+                    <input type="password" id="password" name="password" value={user.password} onChange={handleChange} style={{ width: '100%', padding: '8px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc' }} />
+                </div>
+                <button type="submit" style={{ width: '100%', padding: '10px', fontSize: '16px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Sign Up</button>
             </form>
         </div>
     );
