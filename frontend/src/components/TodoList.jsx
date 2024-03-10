@@ -116,7 +116,7 @@ function TodoList() {
                 onChange={e => setText(e.target.value)}
                 style={{ marginRight: '10px' }}
             />
-            <button onClick={() => addTask(text)} style={{ marginBottom: '10px' }}>Add</button>
+            <button onClick={() => addTask(text)} style={{ marginBottom: '10px' ,marginTop: '60px' }}>Add</button>
         </div>
     );
 }

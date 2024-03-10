@@ -45,6 +45,7 @@ function TodoItem({ task, deleteTask, toggleCompleted }) {
 
 const styles = {
     container: {
+        marginTop: '60px',
         display: 'flex',
         alignItems: 'center',
         backgroundColor: '#f4f4f4',
@@ -70,10 +71,8 @@ const styles = {
         padding: '5px 10px',
         cursor: 'pointer',
         transition: 'background-color 0.3s ease, transform 0.1s ease',
-        outline: 'none',
+        outline: 'none'
     },
-
-
 };
 
 export default TodoItem;
