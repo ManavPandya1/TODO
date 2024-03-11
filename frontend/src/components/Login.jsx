@@ -62,8 +62,10 @@ export default Login;*/
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
+    const navigate = useNavigate();
     const [credentials, setCredentials] = useState({
         username: '',
         password: '',
@@ -86,6 +88,7 @@ const Login = () => {
                 const { token } = response.data;
                 sessionStorage.setItem('token', token);
                 console.log('Login successful!');
+                navigate("/home");
             } else {
                 console.error('Login failed:', response.data.error);
             }
@@ -95,20 +98,55 @@ const Login = () => {
     };
 
     return (
-        <div style={{ maxWidth: '400px', margin: '0 auto', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
-            <h2 style={{ textAlign: 'center' }}>Login</h2>
-            <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column' }}>
-                <div style={{ marginBottom: '15px' }}>
-                    <label htmlFor="username" style={{ fontWeight: 'bold' }}>Username:</label>
-                    <input type="text" id="username" name="username" value={credentials.username} onChange={handleChange} style={{ width: '100%', padding: '8px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc' }} />
-                </div>
-                <div style={{ marginBottom: '15px' }}>
-                    <label htmlFor="password" style={{ fontWeight: 'bold' }}>Password:</label>
-                    <input type="password" id="password" name="password" value={credentials.password} onChange={handleChange} style={{ width: '100%', padding: '8px', fontSize: '16px', borderRadius: '5px', border: '1px solid #ccc' }} />
-                </div>
-                <button type="submit" style={{ width: '100%', padding: '10px', fontSize: '16px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Login</button>
-            </form>
-        </div>
+        <center>
+            <div style={{
+                maxWidth: '400px',
+                margin: '0 auto',
+                padding: '20px',
+                border: '1px solid #ccc',
+                borderRadius: '5px'
+            }}>
+                <h2 style={{textAlign: 'center'}}>Login</h2>
+                <form onSubmit={handleLogin} style={{display: 'flex', flexDirection: 'column'}}>
+                    <div style={{marginBottom: '15px'}}>
+                        <label htmlFor="username" style={{fontWeight: 'bold'}}>Username:</label>
+                        <input type="text" id="username" name="username" value={credentials.username}
+                               onChange={handleChange} style={{
+                            width: '100%',
+                            padding: '8px',
+                            fontSize: '16px',
+                            borderRadius: '5px',
+                            border: '1px solid #ccc'
+                        }}/>
+                    </div>
+                    <div style={{marginBottom: '15px'}}>
+                        <label htmlFor="password" style={{fontWeight: 'bold'}}>Password:</label>
+                        <input type="password" id="password" name="password" value={credentials.password}
+                               onChange={handleChange} style={{
+                            width: '100%',
+                            padding: '8px',
+                            fontSize: '16px',
+                            borderRadius: '5px',
+                            border: '1px solid #ccc'
+                        }}/>
+                    </div>
+                    <button type="submit" style={{
+                        width: '100%',
+                        padding: '10px',
+                        fontSize: '16px',
+                        backgroundColor: '#007bff',
+                        color: '#fff',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer'
+                    }}>Login
+                    </button>
+                    <div>Doesn't have any account? <button onClick={() => {
+                        navigate("/signup")
+                    }}>SignUp</button></div>
+                </form>
+            </div>
+        </center>
     );
 };
 

@@ -74,8 +74,10 @@ export default Signup;*/
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 const Signup = () => {
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         username: '',
         email: '',
@@ -104,6 +106,7 @@ const Signup = () => {
             if (response.ok) {
                 const responseData = await response.json();
                 console.log(responseData.message);
+                navigate("/login")
             } else {
                 const errorData = await response.json();
                 console.error('Error during signup:', errorData.error);

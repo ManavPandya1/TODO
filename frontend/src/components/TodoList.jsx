@@ -57,10 +57,20 @@ function TodoList() {
 }
 export default TodoList;*/
 
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import TodoItem from './TodoItem';
+import Navbar from "./Navbar";
+import {useNavigate} from "react-router-dom";
 
 function TodoList() {
+    const navigate = useNavigate();
+    useEffect(() => {
+        const token = sessionStorage.getItem("token");
+        if(!token)
+        {
+            navigate("/");
+        }
+    }, []);
     const [tasks, setTasks] = useState([
         {
             id: 1,
@@ -101,6 +111,8 @@ function TodoList() {
     }
 
     return (
+        <>
+            <Navbar />
         <div className="todo-list" style={{ textAlign: 'center', marginTop: '20px' }}>
             {tasks.map(task => (
                 <TodoItem
@@ -117,7 +129,7 @@ function TodoList() {
                 style={{ marginRight: '10px' }}
             />
             <button onClick={() => addTask(text)} style={{ marginBottom: '10px' ,marginTop: '60px' }}>Add</button>
-        </div>
+        </div></>
     );
 }
 
