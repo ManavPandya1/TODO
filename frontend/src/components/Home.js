@@ -14,9 +14,12 @@ export default function Home(){
     return (
         <>
             <Navbar/>
-            <div>
-                wejghaehjh
-            </div>
+            <center style={{marginTop:"35vh"}}>
+                <div>
+                    <div style={{marginBottom:"10px"}}>THIS OUR HOME PAGE.</div>
+                    <div> YOU CAN STORE YOUR DAILY TASK IN OUR APP.</div>
+                </div>
+            </center>
         </>
     );
 }

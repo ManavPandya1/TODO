@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../styles/navbar.css"
 import {BrowserRouter as Router, Link, Route, Routes, useNavigate} from "react-router-dom";
 
 const Navbar = () => {
@@ -31,17 +32,14 @@ const Navbar = () => {
         <nav>
                 <div>
                     <nav className="navbar-container">
-                        <div className="inner-navbar">
-                            <img src="https://see.fontimg.com/api/renderfont4/yE5M/eyJyIjoiZnMiLCJoIjozNCwidyI6MTI1MCwiZnMiOjI3LCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzM1M0Q0QiIsInQiOjF9/TElTVCBIQU5ETEVS/moonhouse.png"/>
+                            <img style={{width:"290px",height:"50px"}} src="https://see.fontimg.com/api/renderfont4/yE5M/eyJyIjoiZnMiLCJoIjozNCwidyI6MTI1MCwiZnMiOjI3LCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzM1M0Q0QiIsInQiOjF9/TElTVCBIQU5ETEVS/moonhouse.png"/>
                             <div>
-                                <Link to="/Home" style={{ margin: '10px' }}>Home</Link>
-                                <Link to="/TodoList" style={{ margin: '10px' }}>Todo List</Link>
-                                <Link to="/upload" style={{ margin: '10px' }}>Upload File</Link>
-                                <Link to="/budget" style={{ margin: '10px' }}>Budget</Link>
-                                <button onClick={handleLogout} style={{ margin: '10px' }}>Logout</button>
+                                <Link  className="inner-navbar" to="/Home" >Home</Link>
+                                <Link className="inner-navbar" to="/TodoList" >Todo List</Link>
+                                <Link className="inner-navbar" to="/upload" >Upload File</Link>
+                                <Link className="inner-navbar" to="/budget" >Budget</Link>
+                                <button onClick={handleLogout} style={{ margin: '10px',padding:"5px" }}>Logout</button>
                             </div>
-
-                        </div>
                     </nav>
                 </div>
         </nav>
