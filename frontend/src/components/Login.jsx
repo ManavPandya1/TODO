@@ -104,7 +104,10 @@ const Login = () => {
                 margin: '0 auto',
                 padding: '20px',
                 border: '1px solid #ccc',
-                borderRadius: '5px'
+                borderRadius: '5px',
+                marginTop:"20vh",
+                backgroundColor:"rgb(255,253,253)",
+                boxShadow:"0px 2px 10px rgba(0,0,0,.5)"
             }}>
                 <h2 style={{textAlign: 'center'}}>Login</h2>
                 <form onSubmit={handleLogin} style={{display: 'flex', flexDirection: 'column'}}>
@@ -112,7 +115,7 @@ const Login = () => {
                         <label htmlFor="username" style={{fontWeight: 'bold'}}>Username:</label>
                         <input type="text" id="username" name="username" value={credentials.username}
                                onChange={handleChange} style={{
-                            width: '100%',
+                            width:"23vw",
                             padding: '8px',
                             fontSize: '16px',
                             borderRadius: '5px',
@@ -123,7 +126,7 @@ const Login = () => {
                         <label htmlFor="password" style={{fontWeight: 'bold'}}>Password:</label>
                         <input type="password" id="password" name="password" value={credentials.password}
                                onChange={handleChange} style={{
-                            width: '100%',
+                            width: '23vw',
                             padding: '8px',
                             fontSize: '16px',
                             borderRadius: '5px',
@@ -143,6 +146,14 @@ const Login = () => {
                     </button>
                     <div>Doesn't have any account? <button onClick={() => {
                         navigate("/signup")
+                    }}
+                    style={{
+                        padding:"15px",
+                        border:"none",
+                        marginTop:"5px",
+                        borderRadius:"5px",
+                        backgroundColor:'#007bff',
+                        color:"white"
                     }}>SignUp</button></div>
                 </form>
             </div>
