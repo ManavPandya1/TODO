@@ -8,7 +8,7 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String Task;
+    private String task;
 
     public Long getId() {
         return id;
@@ -19,10 +19,30 @@ public class Item {
     }
 
     public String getTask() {
-        return Task;
+        return task;
     }
 
     public void setTask(String task) {
-        Task = task;
+        this.task = task;
+    }
+
+    public Item(){
+
+    }
+    public Item(String task, User user) {
+        this.task = task;
+        this.user = user;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Long getUser() {
+        return user.getId();
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
