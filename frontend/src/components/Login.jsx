@@ -144,7 +144,7 @@ const Login = () => {
                         cursor: 'pointer'
                     }}>Login
                     </button>
-                    <div>Doesn't have any account? <button onClick={() => {
+                    <div>Don't have any account? <button onClick={() => {
                         navigate("/signup")
                     }}
                     style={{

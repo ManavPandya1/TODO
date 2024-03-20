@@ -6,6 +6,7 @@ import com.example.todo.repository.ItemRepository;
 import com.example.todo.repository.UserRepository;
 import com.example.todo.service.ItemService;
 import com.example.todo.service.UserService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
@@ -52,6 +53,14 @@ public class ItemController {
         User user = userRepository.getUserByUserId(userId);
         List<Item> items = itemRepository.findByUser(user);
         return ResponseEntity.ok(items);
+    }
+
+    @Transactional
+    @PostMapping("deleteTask/{taskId}")
+    public ResponseEntity<?> deleteTask(@PathVariable Long taskId)
+    {
+        itemRepository.deleteByTaskId(taskId);
+        return ResponseEntity.ok("Sucesss");
     }
 
 }

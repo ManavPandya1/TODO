@@ -85,6 +85,23 @@ function TodoList() {
             console.error('Error fetching tasks:', error);
         }
     }
+    const handleDelete = async (taskId) => {
+        try {
+            const res = await fetch(`http://localhost:8080/api/deleteTask/${taskId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!res.ok) {
+                throw new Error('Failed to delete task');
+            }
+            console.log("deleted");
+            fetchAllTodoTask();
+        } catch (error) {
+            console.error('Error Deleting task:', error);
+        }
+    }
 
     return (
         <>
@@ -94,36 +111,65 @@ function TodoList() {
                     value={task}
                     onChange={e => setTask(e.target.value)}
                     style={{
-                        width:"500px",
-                        height:"30px",
-                        fontSize:"20px",
-                        border:"none",
-                        borderRadius:"5px",
-                        marginBottom:"25px",
-                        marginRight:"10px",
-                        marginTop:"60px",
-                        boxShadow:"0px 1px 10px rgba(0,0,0,0.5)"
+                        width: "500px",
+                        height: "30px",
+                        fontSize: "20px",
+                        border: "none",
+                        borderRadius: "5px",
+                        marginBottom: "25px",
+                        marginRight: "10px",
+                        marginTop: "60px",
+                        boxShadow: "0px 1px 10px rgba(0,0,0,0.5)"
                     }}
                 />
-                    <button onClick={handleTask} style={{marginTop:"60px",marginBottom: '25px',padding:"7px",width:"50px",border:"none",borderRadius:"5px"}}>Add</button>
+                    <button onClick={handleTask} style={{
+                        marginTop: "60px",
+                        marginBottom: '25px',
+                        padding: "7px",
+                        width: "50px",
+                        border: "none",
+                        borderRadius: "5px"
+                    }}>Add
+                    </button>
                 </center>
                 {/* Render each task */}
                 <div>
                     {todoTask && todoTask.map(task => (
-                        <center>
-                            <div key={task.id} style={{
-                                fontSize: "20px",
+                        <center key={task.id}>
+                            <table style={{
                                 backgroundColor: "rgba(0,0,0,0.7)",
                                 color: "white",
-                                width: "500px",
-                                padding: "10px",
+                                width: "700px",
                                 marginBottom: "2px",
-                                textAlign: "center",
-                                borderRadius:"5px"
-                            }}>{task.task}</div>
+                                borderRadius: "5px",
+                                borderCollapse: "collapse",
+                                fontSize: "20px",
+                            }}>
+                                <tbody>
+                                <tr>
+                                    <td style={{padding: "10px", textAlign: "left"}}>{task.task}</td>
+                                    <td style={{padding: "10px", textAlign: "right"}}>
+                                        <button style={{
+                                            backgroundColor: "blue",
+                                            color: "white",
+                                            border: "none",
+                                            padding: "10px 20px",
+                                            borderRadius: "5px",
+                                            cursor: "pointer"
+                                        }}
+                                        onClick={()=>handleDelete(task.id)}
+                                        >
+                                            Done
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </center>
                     ))}
                 </div>
+
+
             </div>
         </>
     );
